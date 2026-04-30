@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{% block title %} Users requests {% endblock %}</h1>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>From user</th>
+            <th>To user</th>
+            <th>Amount requesting</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for user_request in requests %}
+        <tr>
+            <td>{{ user_request.from_user }}</td>
+            <td>{{ user_request.to_user }}</td>
+            <td>{{ user_request.enter_amount }}</td>
+        <td>
+        <form method = POST>
+            {% csrf_token %}
+            <input type = "hidden" name ="user_request_id" value = "{{ user_request.id }}">
+            <button type = "submit" name = "action" value="accept"> Accept </button>
+            <button type = "submit" name = "action" value="reject"> Reject </button>
+        </form>
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

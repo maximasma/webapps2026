@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{% block title %} Users requests {% endblock %}</h1>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th>From user</th>
+            <th>To user</th>
+            <th>Amount sent</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for transaction in user_transactions %}
+        <tr>
+            <td>{{ transaction.from_user }}</td>
+            <td>{{ transaction.to_user }}</td>
+            <td>{{ transaction.enter_amount }}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

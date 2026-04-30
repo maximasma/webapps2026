@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+     <div class="col-md-8 mx-auto">
+            <form method="POST" style = "border: 1px solid black; margin:4%; padding:8%; border-radius:1%;">
+            {% csrf_token %}
+                    <fieldset class ="form-group">
+                        {{ user_form|crispy }}
+                        {{ account_form|crispy }}
+                    </fieldset>
+                <button style ="background: blue; font-size: 2rem; padding:2%;" class ="btn btn-outline-info"
+                        type="submit"><span class = "glyphicon glyphicon-check"></span> register</button>
+                <br/>
+                <sub></sub> <a href="{% url 'login' %}" style="text-decoration: none; color: blue; padding:2%; cursor:pointer; margin-right:2%;">Already have an account?</a></sub>
+            </form>
+    </div>
+{% endblock %}
